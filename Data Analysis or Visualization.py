@@ -7,9 +7,15 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 import numpy as np
 
+#This function creates a report of rows in data file with null values in fileds 'unit price' and 'Quantity' that are dropped from file
+def Dropped_data_report(file):
+    x=file[file['Quantity'].isna()|file['unitprice'].isna()]
+    x.to_csv('Missing_data.csv', mode='a',header='False')
+
 #This function drops rows of the file with null values in fileds 'unit price' and 'Quantity'
 #Function also splits the date fields into 'day', 'month', 'year' fields.
-def Data_wrangling(file):    
+def Data_wrangling(file): 
+    Dropped_data_report(file)   
     file = file.dropna(subset=['Quantity','unitprice'])
     file['OrderDate'] = pd.to_datetime(file['OrderDate'])
     #split date field to day, month & year
@@ -23,7 +29,7 @@ def Popular_product(file):
     l1=pd.DataFrame()
     l1=file.groupby(['Item'])['Quantity'].sum().nlargest(3).to_frame()
     l1.plot.bar()
-    plt.title("Top 3 Popular poducts"+ csvnames[i])  
+    plt.title("Top 3 Popular poducts "+ csvnames[i])  
 
 #Function to create a new column 'Gross revenue' and round by 2 decimal places
 def Avg_monthly_rev(file):    
@@ -47,7 +53,7 @@ def Price_bins_order(file):
     file['Price-binned']=pd.cut(file['unitprice'],bins,labels=group_names,include_lowest=True)
     file.groupby(file['Price-binned'])['Quantity'].sum()
     #Histogram of binned Prices
-    plt.title("Number of items sold for each Price Range of products"+ csvnames[i])
+    plt.title("Number of items sold for each Price Range of products "+ csvnames[i])
     plt.xlabel("Price category")
     plt.ylabel("Number of items sold")
     plt.hist(file['unitprice'],bins)
@@ -56,6 +62,9 @@ def Price_bins_order(file):
     
 # use glob to get all the csv files in the folder 
 path = os.getcwd() 
+if os.path.exists('Missing_data.csv'):
+
+    os.remove('Missing_data.csv')
 csv_files = glob.glob(os.path.join(path, "*.csv"))
 csvnames = []
 
@@ -66,10 +75,10 @@ for file in glob.glob("*.csv"):
 headerList=['SalesOrderNumber', 'SalesOrderLineNumber','OrderDate', 'CustomerName','Email', 'Item', 'Quantity', 'unitprice','tax']
 
 #User Input for the graph to display
-x=input("We can Anlayze the data and view the different charts on request. Enter the chart viewing option from below\n 1. View Avg Monthly revenue Chart\n 2. Display Price ranges Vs Sold Items Count \n 3. Top 3 Popular product of the Year")
+choice=input("We can Anlayze the data and view the different charts on request. Enter the chart viewing option from below\n 1. Analyze data files and View Avg Monthly revenue Chart\n 2. Display Price ranges Vs Sold Items Count \n 3. Top 3 Popular product of the Year")
 i=0
 
-if int(x) == 1:
+if int(choice) == 1:
     fig,ax1=plt.subplots()
 
 # loop over the list of csv files 
@@ -80,7 +89,7 @@ for csv in csv_files:
     #filter only requ fields for processing
     filtered_f=f.filter(['month','year','Item','Quantity','unitprice','tax'])
     
-    match x:
+    match choice:
         case "1":#Analyze all data files and view monthly avg revenue chart 
 
             print(file.head())
@@ -88,8 +97,7 @@ for csv in csv_files:
             Avg_monthly_rev(filtered_f)
                         
         case "2":#Display bins based on price range of items sold
-            
-            bins=np.linspace(min(file['unitprice']),max(file['unitprice']),4)
+            bins=np.linspace(min(filtered_f['unitprice']),max(filtered_f['unitprice']),4)
             Price_bins_order(filtered_f)
             i=i+1
             
@@ -100,7 +108,7 @@ for csv in csv_files:
         case _:
             print("Invalid option")
 
-if int(x)==1:
+if int(choice)==1:
     plt.title("Monthly Revenue Chart")
     plt.legend(csvnames, loc="lower left")
     plt.show()
