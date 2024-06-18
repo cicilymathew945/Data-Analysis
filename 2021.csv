@@ -1,8 +1,8 @@
 SalesOrderNumber,SalesOrderLineNumber,OrderDate,CustomerName,Email,Item,Quantity,unitprice,tax
 SO49172,1,1/1/2021,Brian Howard,brian23@adventure-works.com,"Road-250 Red, 44",1,2443.35,195.468
-SO49173,1,1/1/2021,Linda Alvarez,linda19@adventure-works.com,"Mountain-200 Silver, 38",1,2071.4196,165.7136
-SO49174,1,1/1/2021,Gina Hernandez,gina4@adventure-works.com,"Mountain-200 Silver, 42",1,2071.4196,165.7136
-SO49178,1,1/1/2021,Beth Ruiz,beth4@adventure-works.com,"Road-550-W Yellow, 44",1,1000.4375,80.035
+SO49173,1,1/1/2021,Linda Alvarez,linda19@adventure-works.com,"Mountain-200 Silver, 38",1,782.99,165.7136
+SO49174,1,1/1/2021,Gina Hernandez,gina4@adventure-works.com,"Mountain-200 Silver, 42",1,782.99,165.7136
+SO49178,1,1/1/2021,Beth Ruiz,beth4@adventure-works.com,"Road-550-W Yellow, 44",1,2049.0982,80.035
 SO49179,1,1/1/2021,Evan Ward,evan13@adventure-works.com,"Road-550-W Yellow, 38",1,1000.4375,80.035
 SO49175,1,1/1/2021,Margaret Guo,margaret24@adventure-works.com,"Road-250 Red, 52",1,2443.35,195.468
 SO49180,1,1/1/2021,Mitchell Yuan,mitchell6@adventure-works.com,"Road-650 Black, 58",1,782.99,62.6392
@@ -28778,7 +28778,7 @@ SO63074,2,12/31/2021,Erick Rodriguez,erick19@adventure-works.com,AWC Logo Cap,1,
 SO63118,1,12/31/2021,Jessie Xu,jessie17@adventure-works.com,"Road-750 Black, 52",1,539.99,43.1992
 SO63093,1,12/31/2021,Rebekah Martin,rebekah20@adventure-works.com,Touring Tire Tube,1,4.99,0.3992
 SO63093,2,12/31/2021,Rebekah Martin,rebekah20@adventure-works.com,Patch Kit/8 Patches,1,2.29,0.1832
-SO63113,1,12/31/2021,Carolyn Alonso,carolyn29@adventure-works.com,"Road-550-W Yellow, 48",1,1120.49,89.6392
-SO63113,2,12/31/2021,Carolyn Alonso,carolyn29@adventure-works.com,"Short-Sleeve Classic Jersey, S",1,53.99,4.3192
-SO63066,1,12/31/2021,Teresa Navarro,teresa10@adventure-works.com,Mountain Tire Tube,1,4.99,0.3992
-SO63066,2,12/31/2021,Teresa Navarro,teresa10@adventure-works.com,Patch Kit/8 Patches,1,2.29,0.1832
+SO63113,1,12/31/2021,Carolyn Alonso,carolyn29@adventure-works.com,"Road-550-W Yellow, 48",1,NaN,89.6392
+SO63113,2,12/31/2021,Carolyn Alonso,carolyn29@adventure-works.com,"Short-Sleeve Classic Jersey, S",NaN,NaN,4.3192
+SO63066,1,12/31/2021,Teresa Navarro,teresa10@adventure-works.com,Mountain Tire Tube,NaN,4.99,0.3992
+SO63066,2,12/31/2021,Teresa Navarro,teresa10@adventure-works.com,Patch Kit/8 Patches,NaN,2.29,0.1832
